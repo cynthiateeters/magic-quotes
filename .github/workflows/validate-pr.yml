@@ -1,0 +1,31 @@
+name: Validate Quote Data
+
+on:
+  pull_request:
+    paths:
+      - "data/*.json"
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate quote files
+        run: npm run validate
+
+      - name: Check for duplicate IDs
+        run: npm run validate

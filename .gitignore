@@ -192,6 +192,12 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/node,macos,windows,linux,vscode
 
-#
 # Local Netlify folder
 .netlify
+
+# Vite cache
+.vite/
+
+# Keep manifest.json committed for no-build deployments
+# manifest.json
+reports/

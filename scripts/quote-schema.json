@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["author", "about", "entries"],
+  "properties": {
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Name of the contributor"
+    },
+    "about": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Short description of this collection"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "tone", "text", "source"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Unique identifier for this entry"
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Category of the quote"
+          },
+          "tone": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Tone of the quote"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The quote text"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Source of the quote"
+          },
+          "prompt_notes": {
+            "type": "string",
+            "description": "Optional notes about prompt creation"
+          }
+        }
+      }
+    }
+  }
+}

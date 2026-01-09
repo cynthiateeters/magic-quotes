@@ -1,24 +1,42 @@
-// This function loads fortunes from a JSON file and initializes the fortunes array
-let fortunes = [];
+// Load manifest first to get list of data files
+let allEntries = [];
 
-fetch('fortunes.json')
-  .then(response => response.json())
-  .then(data => {
-    fortunes = data;
+fetch("manifest.json")
+  .then((response) => response.json())
+  .then((manifest) => {
+    console.log(`Loading ${manifest.dataFiles.length} data files...`);
+
+    // Load all data files listed in manifest
+    return Promise.all(
+      manifest.dataFiles.map((file) =>
+        fetch(file)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(
+              `Loaded ${data.author}: ${data.entries.length} entries`,
+            );
+            return data.entries;
+          }),
+      ),
+    );
   })
-  .catch(error => console.error('Error loading fortunes:', error));
+  .then((entriesArrays) => {
+    // Flatten all entries into single array
+    allEntries = entriesArrays.flat();
+    console.log(`Total quotes available: ${allEntries.length}`);
+  })
+  .catch((error) => console.error("Error loading quotes:", error));
 
-// This function picks a random fortune and shows it on the page
+// Display a random quote
 function tellFortune() {
-  if (fortunes.length === 0) {
-    console.warn('Fortunes data has not loaded yet.');
+  if (allEntries.length === 0) {
+    console.warn("Quotes data has not loaded yet.");
     return;
   }
 
-  const randomIndex = Math.floor(Math.random() * fortunes.length);
-  const selectedFortune = fortunes[randomIndex];
+  const randomIndex = Math.floor(Math.random() * allEntries.length);
+  const selectedEntry = allEntries[randomIndex];
 
-  // Display the fortune on the page
   const fortuneElement = document.getElementById("fortune");
-  fortuneElement.textContent = selectedFortune;
+  fortuneElement.textContent = selectedEntry.text;
 }

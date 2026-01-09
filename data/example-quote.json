@@ -1,0 +1,30 @@
+{
+  "author": "Example Contributor",
+  "about": "Sample quotes demonstrating the data structure",
+  "entries": [
+    {
+      "id": "example-1",
+      "category": "developer-wisdom",
+      "tone": "reflective",
+      "text": "Code is read more often than it is written.",
+      "source": "ai-assisted",
+      "prompt_notes": "Asked for quotes about code readability"
+    },
+    {
+      "id": "example-2",
+      "category": "motivational",
+      "tone": "encouraging",
+      "text": "Every expert was once a beginner.",
+      "source": "ai-assisted",
+      "prompt_notes": "Requested motivational quotes for learners"
+    },
+    {
+      "id": "example-3",
+      "category": "humorous",
+      "tone": "playful",
+      "text": "There are only two hard things in Computer Science: cache invalidation and naming things.",
+      "source": "ai-assisted",
+      "prompt_notes": "Asked for humorous programming truths"
+    }
+  ]
+}
