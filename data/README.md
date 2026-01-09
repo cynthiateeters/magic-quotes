@@ -1,10 +1,14 @@
 # Quote data files
 
+This directory contains structured JSON files for the Magic Quotes project. Each contributor adds their own file to demonstrate real-world Git collaboration patterns without merge conflicts.
+
+📖 **New here?** See the [main README](../README.md) for project overview and setup.
+
 ## Contribution model
 
-- **One JSON file per contributor**
-- **Never edit other contributors' files**
-- **Add your file, commit, and open a PR**
+- **One JSON file per contributor** - Eliminates merge conflicts
+- **Never edit other contributors' files** - Work independently
+- **Add your file, commit, and open a PR** - Standard Git workflow
 
 ## File naming
 
@@ -81,3 +85,31 @@ Suggested tones (feel free to create your own):
 - thoughtful
 - serious
 - lighthearted
+
+## Using AI assistance
+
+You're encouraged to use AI tools (like ChatGPT, Claude, etc.) to help generate quote content. This teaches:
+
+- **Prompt engineering** - Crafting effective prompts
+- **Critical evaluation** - Assessing AI outputs
+- **Human curation** - Editing and selecting the best results
+
+**Best practices**:
+
+1. Start with a clear prompt describing the type of quotes you want
+2. Generate multiple options and select the best ones
+3. Edit AI-generated text to match your voice
+4. Document your process in `prompt_notes` field
+5. Always review for accuracy and appropriateness
+
+**Example workflow**:
+
+```text
+Prompt: "Generate 5 encouraging quotes about learning to code,
+         written in a friendly, conversational tone"
+
+→ Review AI output
+→ Select best 2-3 quotes
+→ Edit for clarity and authenticity
+→ Add to your JSON file with source: "ai-assisted"
+```

@@ -1,6 +1,8 @@
 # Magic quotes
 
-A collaborative web application for displaying random quotes. Built as an educational project to teach Git workflows, data structures, and modern web development practices.
+A collaborative web application for displaying random quotes, featuring HAP™ from HAP's Learning Lab. Built as an educational project to teach Git workflows, structured data, and modern web development practices.
+
+🌐 **[View Live Demo](https://magic-quotes.netlify.app)**
 
 ## Quick start
 
@@ -25,15 +27,18 @@ A collaborative web application for displaying random quotes. Built as an educat
 
 ### For users
 
-Simply open `index.html` in a browser, or visit the deployed site.
+Visit the [live demo](https://magic-quotes.netlify.app) or run locally with `npm run dev`.
 
 ## Project structure
 
-- `data/` - Quote data files (one per contributor)
-- `index.html` - Single-page application
-- `script.js` - Application logic
-- `manifest.json` - Generated list of data files (auto-generated)
+- `data/` - Quote data files (one per contributor, source files)
+- `public/` - Static assets copied to build output
+  - `script.js` - Application logic
+  - `manifest.json` - Generated list of data files (auto-generated)
+  - `data/` - Copied data files for deployment
+- `index.html` - Single-page application with HAP Learning Lab design
 - `scripts/` - Build and validation scripts
+- `dist/` - Build output (generated, deployed to Netlify)
 
 ## How it works
 
@@ -71,10 +76,12 @@ npm run preview   # Preview production build
 
 The build automatically:
 
-1. Scans the `data/` directory
+1. Scans the `data/` directory for source files
 2. Validates each JSON file against schema
-3. Checks for duplicate IDs
-4. Generates `manifest.json` with file list
+3. Checks for duplicate IDs across all files
+4. Generates `public/manifest.json` with file list
+5. Copies all static assets from `public/` to `dist/`
+6. Deploys `dist/` to Netlify
 
 ## Contributing
 
@@ -107,6 +114,24 @@ Contributors are encouraged to use AI tools to generate quote content, with the 
 - Critical evaluation of AI outputs
 - Human-AI collaboration workflows
 
+## About HAP's Learning Lab
+
+This project features **HAP™** (HyBit A. ProtoBot™), Prof. Teeters' apprentice learner. HAP learns alongside students, demonstrating that even AI assistants are always learning new things. The warm, approachable design follows the HAP Learning Lab style guide, making technical concepts feel accessible and friendly.
+
+## Deployment
+
+This site is deployed on Netlify and automatically rebuilds when changes are pushed to the main branch. The deployment process:
+
+1. GitHub triggers Netlify on push to main
+2. Netlify runs `npm run build`
+3. Build validates data, generates manifest, and creates `dist/`
+4. Netlify serves `dist/` directory at magic-quotes.netlify.app
+
 ## License
 
-See [LICENSE.md](LICENSE.md)
+This project uses a dual-license model:
+
+- **Code**: MIT License (see [LICENSE.md](LICENSE.md))
+- **HAP™ character and educational content**: Proprietary (see [TRADEMARK.md](TRADEMARK.md))
+
+You're free to use, modify, and distribute the code, but the HAP character, design, and educational methodology remain proprietary to Prof. Cynthia Teeters.
