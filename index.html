@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Magical Fortune Teller</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Basic reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Body styling with a simple gradient background */
+    body {
+      background: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364);
+      font-family: 'Montserrat', sans-serif;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Container to center and limit the content width */
+    .container {
+      text-align: center;
+      padding: 2rem;
+      background-color: hsla(0, 0.00%, 100.00%, 0.05);
+      /* Slight overlay box */
+      border-radius: 1rem;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 2rem hsla(0, 0.00%, 0.00%, 0.30);
+    }
+
+    /* Magic ball image styling */
+    .magic-ball-img {
+      max-width: 20rem;
+      display: block;
+      margin: 0 auto 2rem;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      font-weight: 700;
+      font-size: 5rem;
+    }
+
+    /* Styled button */
+    .fortune-button {
+      background-color: hsl(248, 53.50%, 57.80%);
+      /* SlateBlue */
+      border: none;
+      border-radius: 8px;
+      padding: 15px 30px;
+      font-size: 5rem;
+      font-weight: 700;
+      color: #FFF;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .fortune-button:hover {
+      background-color: hsl(248, 39.00%, 39.20%);
+      /* DarkSlateBlue */
+    }
+
+    /* Fortune text styling */
+    #fortune {
+      margin-top: 30px;
+      font-size: 3rem;
+      min-height: 50px;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img class="magic-ball-img" src="magic-ball.png" alt="Magic Ball" />
+
+    <h1>Welcome to the Magical Fortune Teller</h1>
+    <button class="fortune-button" onclick="tellFortune()">Reveal My Fortune</button>
+    <p id="fortune">Your fortune will appear here!</p>
+  </div>
+
+  <!-- Link to your JavaScript code -->
+  <script src="script.js"></script>
+</body>
+
+</html>
