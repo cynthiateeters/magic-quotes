@@ -201,3 +201,6 @@ $RECYCLE.BIN/
 # Keep manifest.json committed for no-build deployments
 # manifest.json
 reports/
+# Screenshot files in reports
+reports/*.png
+reports/*.jpg

@@ -1,0 +1,15 @@
+# Netlify configuration for Magic Quotes
+
+[build]
+  # Build command runs validation and Vite build
+  command = "npm run build"
+
+  # Directory to publish (Vite outputs to dist/)
+  publish = "dist"
+
+  # Use Node.js 20 to match GitHub Actions
+  [build.environment]
+    NODE_VERSION = "20"
+
+# No redirects needed - this is a simple static site
+# All assets are in the build output

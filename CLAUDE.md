@@ -133,10 +133,14 @@ The project uses **Vite** for development and **automated validation**:
 │   └── quote-schema.json     # JSON Schema definition
 ├── .github/workflows/
 │   └── validate-pr.yml     # CI/CD validation
-├── fortunes.json           # (Legacy file - deprecated)
-├── magic-ball.png          # Visual asset
-└── favicon.png             # Favicon
+├── reports/                # Implementation documentation
+├── netlify.toml            # Netlify deployment configuration
+├── LICENSE.md              # MIT License with HAP trademark exclusions
+├── TRADEMARK.md            # HAP character and brand usage terms
+└── README.md               # Project documentation
 ```
+
+**Note**: All visual assets (favicon, images) are served via Cloudinary CDN.
 
 ## CSS standards (critical)
 

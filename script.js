@@ -38,5 +38,8 @@ function tellFortune() {
   const selectedEntry = allEntries[randomIndex];
 
   const fortuneElement = document.getElementById("fortune");
-  fortuneElement.textContent = selectedEntry.text;
+
+  // Remove empty class and update content
+  fortuneElement.classList.remove("empty");
+  fortuneElement.innerHTML = `<p>${selectedEntry.text}</p>`;
 }

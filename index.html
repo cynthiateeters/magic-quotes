@@ -2,99 +2,460 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <title>Magic Quotes</title>
-  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Magic quotes — HAP learning demo</title>
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://res.cloudinary.com/cynthia-teeters/image/upload/f_png,q_auto,w_16,h_16/v1759596416/hap-favicon-h_gosgur.jpg">
 
   <style>
-    /* Basic reset */
+    /* === CSS CUSTOM PROPERTIES === */
+    :root {
+      /* Primary colors */
+      --warm-orange: hsl(32, 76%, 37%);
+      --soft-orange: hsl(35, 83%, 74%);
+      --peach-background: hsl(32, 41%, 90%);
+      --cream-white: hsl(32, 100%, 98%);
+
+      /* Text colors */
+      --dark-brown: hsl(28, 45%, 16%);
+      --medium-brown: hsl(22, 22%, 34%);
+      --light-brown: hsl(24, 18%, 53%);
+
+      /* Backgrounds and supporting */
+      --ui-border-light: hsl(0, 0%, 87%);
+
+      /* Shadows */
+      --shadow-sm: 0 4px 6px hsl(28, 45%, 16% / 0.06);
+      --shadow-md: 0 8px 12px hsl(28, 45%, 16% / 0.08);
+
+      /* Spacing and layout */
+      --radius: 16px;
+      --radius-lg: 24px;
+    }
+
+    /* === RESET AND BASE STYLES === */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    /* Body styling with a simple gradient background */
     body {
-      background: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364);
-      font-family: 'Montserrat', sans-serif;
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--dark-brown);
+      background-color: var(--peach-background);
       min-height: 100vh;
     }
 
-    /* Container to center and limit the content width */
+    /* === LAYOUT === */
     .container {
-      text-align: center;
-      padding: 2rem;
-      background-color: hsla(0, 0.00%, 100.00%, 0.05);
-      /* Slight overlay box */
-      border-radius: 1rem;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 4px 2rem hsla(0, 0.00%, 0.00%, 0.30);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(1rem, 4vw, 2rem);
     }
 
-    /* Magic ball image styling */
-    .magic-ball-img {
-      max-width: 20rem;
-      display: block;
-      margin: 0 auto 2rem;
+    /* === HEADER SECTION === */
+    .header-section {
+      background-color: var(--cream-white);
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: clamp(1rem, 4vw, 2rem);
+      margin-bottom: 3rem;
+      background-image: radial-gradient(circle at top right, hsl(32, 76%, 37% / 0.08), transparent 60%);
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .header-content {
+      flex: 1;
+    }
+
+    .header-image {
+      flex-shrink: 0;
+      border-radius: 8px;
     }
 
     h1 {
-      margin-bottom: 2rem;
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 700;
-      font-size: 5rem;
+      color: var(--dark-brown);
+      margin-bottom: 0.5rem;
     }
 
-    /* Styled button */
-    .fortune-button {
-      background-color: hsl(248, 53.50%, 57.80%);
-      /* SlateBlue */
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--medium-brown);
+      margin-bottom: 0;
+    }
+
+    /* === INTRO BOX === */
+    .intro-box {
+      border: 2px solid var(--soft-orange);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      background-color: var(--cream-white);
+    }
+
+    .intro-box p {
+      color: var(--medium-brown);
+      margin: 0;
+    }
+
+    /* === MAIN CONTENT === */
+    main {
+      margin-top: 2rem;
+    }
+
+    .topic-section {
+      background-color: var(--cream-white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    .topic-section h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--dark-brown);
+      margin-bottom: 1.5rem;
+    }
+
+    /* === INTERACTION AREA === */
+    .interaction-area {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .quote-button {
+      background-color: var(--warm-orange);
+      color: var(--cream-white);
       border: none;
-      border-radius: 8px;
-      padding: 15px 30px;
-      font-size: 5rem;
+      border-radius: var(--radius);
+      padding: 1rem 2rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      color: #FFF;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-top: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
     }
 
-    .fortune-button:hover {
-      background-color: hsl(248, 39.00%, 39.20%);
-      /* DarkSlateBlue */
+    .quote-button:hover {
+      background-color: hsl(32, 76%, 30%);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
-    /* Fortune text styling */
-    #fortune {
-      margin-top: 30px;
-      font-size: 3rem;
-      min-height: 50px;
-      line-height: 1.4;
-      font-weight: 500;
+    .quote-button:active {
+      transform: translateY(0);
+    }
+
+    .quote-button:focus {
+      outline: 3px solid var(--soft-orange);
+      outline-offset: 3px;
+    }
+
+    .quote-display {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--cream-white), var(--peach-background));
+      border: 2px solid var(--soft-orange);
+      border-radius: var(--radius);
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quote-display p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: var(--dark-brown);
+      font-style: italic;
+      margin: 0;
+    }
+
+    .quote-display.empty {
+      color: var(--light-brown);
+      font-style: normal;
+    }
+
+    .section-intro {
+      margin-bottom: 1.5rem;
+      color: var(--medium-brown);
+    }
+
+    .section-text {
+      color: var(--medium-brown);
+      margin-bottom: 1rem;
+    }
+
+    .section-text-last {
+      color: var(--medium-brown);
+    }
+
+    /* === HAP NOTE CALLOUT === */
+    .hap-note-callout {
+      background: linear-gradient(135deg, var(--cream-white), var(--peach-background));
+      border: 2px solid var(--warm-orange);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hap-note-image {
+      flex-shrink: 0;
+      border-radius: 8px;
+    }
+
+    .hap-note-content h3 {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 700;
+      color: var(--dark-brown);
+      margin-bottom: 0.75rem;
+    }
+
+    .hap-note-content p {
+      color: var(--medium-brown);
+      line-height: 1.6;
+      margin: 0;
+      text-align: left;
+    }
+
+    .pt-2 {
+      padding-top: 0.5rem;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .header-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .header-section p {
+        text-align: left;
+      }
+
+      .header-image {
+        order: -1;
+        margin-bottom: 1rem;
+      }
+
+      .hap-note-callout {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hap-note-image {
+        margin-bottom: 1rem;
+      }
+
+      .quote-button {
+        width: 100%;
+        padding: 1.25rem;
+      }
+    }
+
+    /* === ACCESSIBILITY === */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Skip link for screen readers */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      z-index: 9999;
+      padding: 1rem;
+      background-color: var(--dark-brown);
+      color: var(--cream-white);
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background-color: var(--cream-white);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      padding: 2rem;
+      margin-top: 4rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+
+    .footer p {
+      color: var(--medium-brown);
+      margin: 0.5rem 0;
+    }
+
+    .footer-reminder {
+      font-style: italic;
+      color: var(--light-brown);
+      margin: 1rem 0 2rem 0;
+    }
+
+    .footer-copyright {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      max-width: 800px;
+      margin: 2rem auto 0;
+      padding-top: 2rem;
+      border-top: 2px solid var(--soft-orange);
+      text-align: left;
+    }
+
+    .footer-hybit {
+      flex-shrink: 0;
+      border-radius: 8px;
+    }
+
+    .footer-copyright p {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin: 0.5rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .footer-copyright {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-hybit {
+        margin-bottom: 1rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <img class="magic-ball-img" src="magic-ball.png" alt="Magic Ball" />
+  <!-- Accessibility skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <h1>Welcome to Magic Quotes</h1>
-    <button class="fortune-button" onclick="tellFortune()">Show Me a Quote</button>
-    <p id="fortune">Your quote will appear here!</p>
+  <div class="container">
+    <!-- Header section -->
+    <header class="header-section">
+      <div class="header-content">
+        <h1>Magic quotes</h1>
+        <p class="subtitle">A learning demo for collaborative data structures</p>
+        <p class="pt-2">
+          This demo shows how structured data can power interactive experiences.
+          Each quote comes from a separate JSON file contributed by different students,
+          demonstrating real-world collaboration patterns without merge conflicts.
+        </p>
+      </div>
+      <img
+        src="https://res.cloudinary.com/cynthia-teeters/image/upload/f_auto,q_auto,w_200,c_limit/v1767986774/hap-holding-mystical-orb_cezvqo.jpg"
+        alt="HAP holding a mystical orb" width="200" height="200" class="header-image" decoding="async"
+        fetchpriority="high">
+    </header>
+
+    <!-- Main content -->
+    <main id="main-content">
+
+
+      <!-- Topic section with interaction -->
+      <section class="topic-section">
+        <h2>Try it out</h2>
+        <p class="section-intro">
+          Click the button below to see a random quote from our collection of
+          developer wisdom, motivational thoughts, and practical insights.
+        </p>
+
+        <div class="interaction-area">
+          <button type="button" class="quote-button" onclick="tellFortune()" aria-label="Get a random quote">
+            Show me a quote
+          </button>
+
+          <div class="quote-display empty" id="fortune" role="status" aria-live="polite">
+            <p>Your quote will appear here!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works section -->
+      <section class="topic-section">
+        <h2>How it works</h2>
+
+        <!-- HAP note callout -->
+        <div class="hap-note-callout">
+          <img
+            src="https://res.cloudinary.com/cynthia-teeters/image/upload/f_auto,q_auto,w_150,c_limit/v1759495998/HAP-learner_dvehmt.jpg"
+            alt="HAP with his study book and tools" width="150" height="150" class="hap-note-image" decoding="async"
+            loading="lazy">
+          <div class="hap-note-content">
+            <h3>HAP's insight</h3>
+            <p class="pt-2">
+              Each contributor adds their own JSON file to the data/ folder.
+              The build system automatically finds all files, validates them,
+              and combines their entries into one pool. This means everyone can
+              contribute without stepping on each other's toes!
+            </p>
+            <p class="pt-2">
+              Behind the scenes, this demo loads a manifest file that lists all contributor
+              JSON files. Each file contains structured quote data with metadata like category,
+              tone, and source. When you click the button, JavaScript picks a random entry
+              from the merged collection.
+            </p>
+            <p class="pt-2">
+              This architecture teaches data-driven design while maintaining a simple,
+              framework-free implementation that students can understand and extend.
+            </p>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p><strong>Magic Quotes</strong> | An AI-Enhanced Educational Experience by Prof. Cynthia Teeters</p>
+      <p class="footer-reminder">
+        Thanks for exploring collaborative data structures with me! Remember: one file per contributor means zero merge conflicts! 🟠 — HAP
+      </p>
+      <div class="footer-copyright">
+        <img src="https://res.cloudinary.com/cynthia-teeters/image/upload/f_auto,q_auto,w_80,c_limit/v1759497938/HAP-learner_dvehmt.jpg"
+          alt="HAP the apprentice learner with his study book and tools"
+          class="footer-hybit" width="80" height="80" decoding="async" loading="lazy">
+        <div>
+          <p>HAP&trade; Educational Content &copy; 2026 Cynthia Teeters. All rights reserved.</p>
+          <p>HyBit A. ProtoBot&trade; (HAP&trade;) character and the apprentice learning methodology are proprietary educational innovations.</p>
+          <p>Character concept, teaching methodology, and all written content created by Prof. Cynthia Teeters. Visual elements created with AI assistance.</p>
+        </div>
+      </div>
+    </footer>
   </div>
 
-  <!-- Link to your JavaScript code -->
+  <!-- JavaScript remains unchanged -->
   <script src="script.js"></script>
+
+  <!--
+  HAP™ Educational Content © 2026 Cynthia Teeters. All rights reserved.
+  HyBit A. ProtoBot™ (HAP™) character and the apprentice learning methodology are proprietary educational innovations.
+  Character concept, teaching methodology, and all written content created by Prof. Cynthia Teeters.
+  Visual elements created with AI assistance.
+  -->
 </body>
 
 </html>
