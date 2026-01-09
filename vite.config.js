@@ -21,12 +21,14 @@ export default defineConfig({
   // Serve from root (index.html is at root)
   root: ".",
 
-  // Public directory for assets
+  // Public directory for static assets (copied as-is to dist)
   publicDir: "public",
 
   // Build output
   build: {
     outDir: "dist",
     assetsDir: "assets",
+    // Copy public directory contents to root of dist
+    copyPublicDir: true,
   },
 });

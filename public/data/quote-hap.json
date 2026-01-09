@@ -1,0 +1,22 @@
+{
+  "author": "Professor Hap",
+  "about": "Wisdom for web development students",
+  "entries": [
+    {
+      "id": "hap-1",
+      "category": "practical",
+      "tone": "thoughtful",
+      "text": "Learning to code is learning to think in new ways.",
+      "source": "ai-assisted",
+      "prompt_notes": "Educational philosophy for programming students"
+    },
+    {
+      "id": "hap-2",
+      "category": "career-advice",
+      "tone": "encouraging",
+      "text": "Your first solution doesn't have to be perfect. It just has to work.",
+      "source": "ai-assisted",
+      "prompt_notes": "Advice about iterative development"
+    }
+  ]
+}

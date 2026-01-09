@@ -4,7 +4,7 @@ import Ajv from "ajv";
 
 const DATA_DIR = "./data";
 const SCHEMA_PATH = "./scripts/quote-schema.json";
-const MANIFEST_PATH = "./manifest.json";
+const MANIFEST_PATH = "./public/manifest.json";
 
 async function main() {
   const validateOnly = process.argv.includes("--validate-only");

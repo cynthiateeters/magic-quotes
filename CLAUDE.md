@@ -120,11 +120,16 @@ The project uses **Vite** for development and **automated validation**:
 ```
 .
 ├── index.html              # Single-page application with inline CSS
-├── script.js               # Loads manifest, handles random selection
-├── manifest.json           # Auto-generated list of data files (committed)
 ├── package.json            # npm dependencies and scripts
 ├── vite.config.js          # Vite configuration
-├── data/                   # One JSON file per contributor
+├── public/                 # Static assets (copied to dist/ during build)
+│   ├── script.js           # Loads manifest, handles random selection
+│   ├── manifest.json       # Auto-generated list of data files
+│   └── data/               # One JSON file per contributor (copied from root)
+│       ├── README.md       # Contributor instructions
+│       ├── example-quote.json  # Example data
+│       └── quote-*.json    # Student contribution files
+├── data/                   # Source data files (contributors edit here)
 │   ├── README.md           # Contributor instructions
 │   ├── example-quote.json  # Example data
 │   └── quote-*.json        # Student contribution files
@@ -133,6 +138,7 @@ The project uses **Vite** for development and **automated validation**:
 │   └── quote-schema.json     # JSON Schema definition
 ├── .github/workflows/
 │   └── validate-pr.yml     # CI/CD validation
+├── dist/                   # Build output (generated, not committed)
 ├── reports/                # Implementation documentation
 ├── netlify.toml            # Netlify deployment configuration
 ├── LICENSE.md              # MIT License with HAP trademark exclusions
@@ -141,6 +147,13 @@ The project uses **Vite** for development and **automated validation**:
 ```
 
 **Note**: All visual assets (favicon, images) are served via Cloudinary CDN.
+
+**Build process**:
+
+1. Contributors add/edit JSON files in `data/` directory
+2. Build system validates files and generates `public/manifest.json`
+3. Vite copies `public/` contents to `dist/` during build
+4. Netlify deploys the `dist/` directory
 
 ## CSS standards (critical)
 
