@@ -77,22 +77,26 @@ npm run preview   # Preview production build
 The build automatically:
 
 1. Scans the `data/` directory for source files
-2. Validates each JSON file against schema
-3. Checks for duplicate IDs across all files
-4. Generates `public/manifest.json` with file list
-5. Copies all static assets from `public/` to `dist/`
-6. Deploys `dist/` to Netlify
+2. Validates file naming convention (`quote-*.json`)
+3. Validates each JSON file against schema (field lengths, ID format)
+4. Checks for duplicate IDs across all files
+5. Blocks spam content (URLs, emails, phone numbers)
+6. Generates `public/manifest.json` with file list
+7. Copies all static assets from `public/` to `dist/`
+8. Deploys `dist/` to Netlify
 
 ## Contributing
 
-See [data/README.md](data/README.md) for detailed contribution guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines and [data/README.md](data/README.md) for technical details.
 
 All contributions must:
 
-- Follow the JSON schema
+- Follow the JSON schema and content guidelines
+- Name files using `quote-yourname.json` pattern (lowercase, hyphens only)
 - Add a new file (never edit existing files)
-- Pass automated validation
-- Include at least one quote entry
+- Pass automated validation (no URLs, emails, or phone numbers in quotes)
+- Include 1-25 quote entries (max 500 characters each)
+- Complete the PR checklist confirming guidelines were followed
 
 ## Educational context
 

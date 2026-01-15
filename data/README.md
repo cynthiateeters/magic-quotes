@@ -2,7 +2,7 @@
 
 This directory contains structured JSON files for the Magic Quotes project. Each contributor adds their own file to demonstrate real-world Git collaboration patterns without merge conflicts.
 
-📖 **New here?** See the [main README](../README.md) for project overview and setup.
+📖 **New here?** See the [main README](../README.md) for project overview and [CONTRIBUTING.md](../CONTRIBUTING.md) for full guidelines.
 
 ## Contribution model
 
@@ -43,14 +43,26 @@ Each file must follow this schema:
 
 ## Required fields
 
-- `author`: Your name
-- `about`: Brief description
-- `entries`: Array of quote objects (minimum 1)
-- `id`: Unique identifier (use your name + number, e.g., "alice-1")
-- `category`: Type of quote (developer-wisdom, motivational, humorous, etc.)
-- `tone`: Emotional tone (reflective, playful, encouraging, etc.)
-- `text`: The actual quote
-- `source`: How quote was created (ai-assisted, original, etc.)
+| Field      | Description                           | Constraints                                  |
+| ---------- | ------------------------------------- | -------------------------------------------- |
+| `author`   | Your name                             | Max 100 chars                                |
+| `about`    | Brief description                     | Max 200 chars                                |
+| `entries`  | Array of quote objects                | 1-25 entries                                 |
+| `id`       | Unique identifier (e.g., "alice-001") | Lowercase, hyphens, numbers only; 3-50 chars |
+| `category` | Type of quote                         | Max 50 chars                                 |
+| `tone`     | Emotional tone                        | Max 50 chars                                 |
+| `text`     | The actual quote                      | Max 500 chars                                |
+| `source`   | How quote was created                 | Max 100 chars                                |
+
+## Content rules
+
+The validation system automatically blocks:
+
+- **URLs** (links starting with `http://`, `https://`, or `www.`)
+- **Email addresses**
+- **Phone numbers**
+
+This prevents spam and keeps quotes focused on the content itself.
 
 ## Validation
 

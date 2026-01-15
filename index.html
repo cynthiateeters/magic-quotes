@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; img-src 'self' https://res.cloudinary.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'">
   <title>Magic quotes — HAP learning demo</title>
   <link rel="icon" type="image/png" sizes="16x16"
     href="https://res.cloudinary.com/cynthia-teeters/image/upload/f_png,q_auto,w_16,h_16/v1759596416/hap-favicon-h_gosgur.jpg">
@@ -169,11 +171,13 @@
       border-radius: var(--radius);
       min-height: 120px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 1rem;
     }
 
-    .quote-display p {
+    .quote-text {
       font-size: 1.25rem;
       line-height: 1.6;
       color: var(--dark-brown);
@@ -181,7 +185,18 @@
       margin: 0;
     }
 
-    .quote-display.empty {
+    .quote-attribution {
+      font-size: 0.9rem;
+      color: var(--light-brown);
+      font-style: normal;
+      margin: 0;
+    }
+
+    .quote-display.empty .quote-attribution {
+      display: none;
+    }
+
+    .quote-display.empty .quote-text {
       color: var(--light-brown);
       font-style: normal;
     }
@@ -431,7 +446,8 @@
           </button>
 
           <div class="quote-display empty" id="fortune" role="status" aria-live="polite">
-            <p>Your quote will appear here!</p>
+            <p class="quote-text">Your quote will appear here!</p>
+            <p class="quote-attribution"></p>
           </div>
         </div>
       </section>

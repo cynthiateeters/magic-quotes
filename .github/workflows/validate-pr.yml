@@ -26,6 +26,3 @@ jobs:
 
       - name: Validate quote files
         run: npm run validate
-
-      - name: Check for duplicate IDs
-        run: npm run validate

@@ -6,47 +6,57 @@
     "author": {
       "type": "string",
       "minLength": 1,
+      "maxLength": 100,
       "description": "Name of the contributor"
     },
     "about": {
       "type": "string",
       "minLength": 1,
+      "maxLength": 200,
       "description": "Short description of this collection"
     },
     "entries": {
       "type": "array",
       "minItems": 1,
+      "maxItems": 25,
       "items": {
         "type": "object",
         "required": ["id", "category", "tone", "text", "source"],
         "properties": {
           "id": {
             "type": "string",
-            "minLength": 1,
-            "description": "Unique identifier for this entry"
+            "pattern": "^[a-z0-9-]+$",
+            "minLength": 3,
+            "maxLength": 50,
+            "description": "Unique identifier (lowercase letters, numbers, hyphens only)"
           },
           "category": {
             "type": "string",
             "minLength": 1,
+            "maxLength": 50,
             "description": "Category of the quote"
           },
           "tone": {
             "type": "string",
             "minLength": 1,
+            "maxLength": 50,
             "description": "Tone of the quote"
           },
           "text": {
             "type": "string",
             "minLength": 1,
-            "description": "The quote text"
+            "maxLength": 500,
+            "description": "The quote text (max 500 characters)"
           },
           "source": {
             "type": "string",
             "minLength": 1,
+            "maxLength": 100,
             "description": "Source of the quote"
           },
           "prompt_notes": {
             "type": "string",
+            "maxLength": 300,
             "description": "Optional notes about prompt creation"
           }
         }

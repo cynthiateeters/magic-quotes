@@ -15,7 +15,11 @@ fetch("manifest.json")
             console.log(
               `Loaded ${data.author}: ${data.entries.length} entries`,
             );
-            return data.entries;
+            // Include author with each entry for attribution
+            return data.entries.map((entry) => ({
+              ...entry,
+              author: data.author,
+            }));
           }),
       ),
     );
@@ -38,8 +42,11 @@ function tellFortune() {
   const selectedEntry = allEntries[randomIndex];
 
   const fortuneElement = document.getElementById("fortune");
+  const quoteText = fortuneElement.querySelector(".quote-text");
+  const quoteAttribution = fortuneElement.querySelector(".quote-attribution");
 
-  // Remove empty class and update content
+  // Remove empty class and update content safely (textContent prevents XSS)
   fortuneElement.classList.remove("empty");
-  fortuneElement.innerHTML = `<p>${selectedEntry.text}</p>`;
+  quoteText.textContent = selectedEntry.text;
+  quoteAttribution.textContent = `— Contributed by ${selectedEntry.author}`;
 }

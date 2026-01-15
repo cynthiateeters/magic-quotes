@@ -1,0 +1,8 @@
+# CODEOWNERS - Requires review from specified owners for matching paths
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# All quote data files require maintainer review
+/data/ @cynthiateeters
+
+# Schema changes require maintainer review
+/scripts/quote-schema.json @cynthiateeters
