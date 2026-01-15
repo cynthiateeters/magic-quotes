@@ -50,3 +50,11 @@ function tellFortune() {
   quoteText.textContent = selectedEntry.text;
   quoteAttribution.textContent = `— Contributed by ${selectedEntry.author}`;
 }
+
+// Attach event listener when DOM is ready (avoids inline onclick)
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.querySelector(".quote-button");
+  if (button) {
+    button.addEventListener("click", tellFortune);
+  }
+});

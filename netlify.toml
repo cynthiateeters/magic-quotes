@@ -13,3 +13,14 @@
 
 # No redirects needed - this is a simple static site
 # All assets are in the build output
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # HSTS - enforce HTTPS for 1 year, include subdomains
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    # Prevent clickjacking
+    X-Frame-Options = "DENY"
+    # Cross-Origin isolation
+    Cross-Origin-Opener-Policy = "same-origin"
