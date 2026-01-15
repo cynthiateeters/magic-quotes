@@ -200,6 +200,48 @@
       color: var(--medium-brown);
     }
 
+    /* === CONTRIBUTE SECTION === */
+    .contribute-section {
+      text-align: center;
+      background: linear-gradient(135deg, var(--cream-white), hsl(32, 76%, 37% / 0.05));
+    }
+
+    .contribute-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contribute-content code {
+      background-color: var(--peach-background);
+      padding: 0.125rem 0.375rem;
+      border-radius: 4px;
+      font-family: ui-monospace, monospace;
+      font-size: 0.9em;
+      color: var(--dark-brown);
+    }
+
+    .contribute-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--warm-orange);
+      color: var(--cream-white);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+    }
+
+    .contribute-link:hover {
+      background-color: hsl(32, 76%, 30%);
+      transform: translateY(-2px);
+    }
+
+    .contribute-link:focus {
+      outline: 3px solid var(--soft-orange);
+      outline-offset: 3px;
+    }
+
     /* === HAP NOTE CALLOUT === */
     .hap-note-callout {
       background: linear-gradient(135deg, var(--cream-white), var(--peach-background));
@@ -425,6 +467,25 @@
           </div>
         </div>
 
+      </section>
+
+      <!-- Contribute section -->
+      <section class="topic-section contribute-section">
+        <h2>Want to contribute?</h2>
+        <p class="section-intro">
+          This project is open source and welcomes contributions from learners like you!
+        </p>
+        <div class="contribute-content">
+          <p class="section-text">
+            Add your own quotes by forking the repository, creating a JSON file in the
+            <code>data/</code> folder, and submitting a pull request. Each contributor
+            gets their own file — no merge conflicts!
+          </p>
+          <a href="https://github.com/cynthiateeters/magic-quotes" target="_blank" rel="noopener noreferrer"
+            class="contribute-link">
+            View on GitHub →
+          </a>
+        </div>
       </section>
     </main>
 
